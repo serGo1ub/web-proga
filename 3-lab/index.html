@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="form">
+        <label for="name">
+            Введите Имя
+            <input type="text" id="name" name="name">
+        </label>
+        <br>
+        <label for="surname">
+            Введите Фамилию
+            <input type="text" id="surname" name="surname">
+        </label>
+        <br>
+        <label for="age">
+            Введите Возраст
+            <input type="text" id="age" name="age">
+        </label>
+        <br>
+        <label for="average">
+            Введите Средний Балл
+            <input type="text" id="average" name="average">
+        </label>
+        <br>
+        <button type="submit">Добавить студента</button>
+        <button type="button" disabled>Закончить</button>
+    </form>
+
+    <div id="box">
+        Средний балл:
+        <span id="result"></span>
+    </div>
+    <div class="alert">
+        <span class="closebtn">&times;</span>
+        Введите значения
+      </div>
+    <script src="app.js"></script>
+</body>
+</html>
