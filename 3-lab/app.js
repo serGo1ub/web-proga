@@ -46,7 +46,6 @@ const Module = (function () {
                 for(let key in obj) {
                     const td = document.createElement('td');
                     td.textContent = obj[key];
-                    // td.setAttribute('contenteditable', true);
                     tr.appendChild(td);
                 }
                 const deleteBtn = document.createElement('td');
@@ -150,12 +149,6 @@ form.addEventListener('submit', event => {
     form.reset();
 });
 
-Module.create('sergey', 'golub', 19, 10);
-Module.create('boris', 'britva', 91, 1);
-Module.create('boris', 'britva', 912, 1);
-Module.create('maxim', 'britva', 91, 1);
-Module.create('tim', 'golub', 19, 10);
-Module.create('kolya', 'britva', 91, 1);
 
 closeBtn.addEventListener('click', () => {
     alert.style.display = 'none';
