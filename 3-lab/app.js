@@ -121,6 +121,11 @@ const Module = (function () {
             })
             parentElement.remove();
         }
+        if (table.children.length === 1) {
+            table.remove();
+            const resultEl = document.querySelector('#result');
+            resultEl.textContent = 0;
+        }
     }
 
     return {
