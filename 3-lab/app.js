@@ -117,9 +117,10 @@ const Module = (function () {
             [...table.children].forEach((child, index) => {
                 if (child === parentElement) {
                     arr.splice(index - 1, 1);
+                    parentElement.remove();
+                    addStudentBtn.disabled = false;
                 }
             })
-            parentElement.remove();
         }
         if (table.children.length === 1) {
             table.remove();
