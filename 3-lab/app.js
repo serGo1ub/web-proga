@@ -171,6 +171,8 @@ getStudentsBtn.addEventListener('click', () => {
         data.forEach(({ name, surname, age, average}) => {
             Module.create(name, surname, age, average);
         });
+
+        getStudentsBtn.disabled = true;
     })
     .catch(err => {
         console.log(err)
