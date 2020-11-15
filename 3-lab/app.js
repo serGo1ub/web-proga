@@ -3,6 +3,7 @@ const alert = document.querySelector('.alert');
 const closeBtn = document.querySelector('.closebtn');
 const button = document.querySelector('[disabled]');
 const addStudentBtn = document.querySelector('[type="submit"]');
+const getStudentsBtn = document.querySelector('#getStudents');
 
 const Module = (function () {
 
@@ -57,6 +58,7 @@ const Module = (function () {
                 table.appendChild(tr);
             
             document.body.appendChild(table);
+            console.log(arr);
     }
 
     function sumAverage() {
@@ -129,13 +131,51 @@ const Module = (function () {
         }
     }
 
+    function httpRequest(method, url){
+        let p = new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open(method, url)
+    
+            xhr.responseType = 'json'
+    
+            xhr.onload = () => {
+                if(xhr.status >= 400){
+                    reject('some error', xhr.response)
+                }
+                else{
+                    resolve(xhr.response)
+                }
+            }
+    
+            xhr.onerror = () => {
+                reject(xhr.response)
+            }
+    
+            xhr.send()
+        })
+
+        return p
+    
+    }
+
     return {
-        create
+        create,
+        httpRequest
     };
 
 })();
 
-
+getStudentsBtn.addEventListener('click', () => {
+    Module.httpRequest('GET', 'students.json')
+    .then(data => {
+        data.forEach(({ name, surname, age, average}) => {
+            Module.create(name, surname, age, average);
+        });
+    })
+    .catch(err => {
+        console.log(err)
+    })
+});
 
 form.addEventListener('submit', event => {
     event.preventDefault();
@@ -146,7 +186,7 @@ form.addEventListener('submit', event => {
 
     if (!name || !surname || !age || !average) {
         alert.style.display = 'block';
-        console.log('input value');
+        console.log('input value'); 
         return;
     }
 
