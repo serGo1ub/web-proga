@@ -58,7 +58,6 @@ const Module = (function () {
                 table.appendChild(tr);
             
             document.body.appendChild(table);
-            console.log(arr);
     }
 
     function sumAverage() {
@@ -121,6 +120,7 @@ const Module = (function () {
                     arr.splice(index - 1, 1);
                     parentElement.remove();
                     addStudentBtn.disabled = false;
+                    sumAverage();
                 }
             })
         }
