@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Index</title>
+</head>
+<body>
+    
+    <button type="button" id="getStudents">GET Students</button>
+    
+    <form id="form">
+        <label for="name">
+            Введите Имя
+            <input type="text" id="name" name="name">
+        </label>
+        <br>
+        <label for="surname">
+            Введите Фамилию
+            <input type="text" id="surname" name="surname">
+        </label>
+        <br>
+        <label for="age">
+            Введите Возраст
+            <input type="text" id="age" name="age">
+        </label>
+        <br>
+        <label for="average">
+            Введите Средний Балл
+            <input type="text" id="average" name="average">
+        </label>
+        <br>
+        <button type="submit">Добавить студента</button>
+        <button type="button" disabled id="endEditBtn">Закончить</button>
+    </form>
+
+    <div id="box">
+        Средний балл:
+        <span id="result"></span>
+    </div>
+    <div class="alert">
+        <span class="closebtn">&times;</span>
+        Введите значения
+      </div>
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

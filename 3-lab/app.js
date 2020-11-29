@@ -186,7 +186,7 @@ form.addEventListener('submit', event => {
     const age = form.age.value.trim();
     const average = form.average.value.trim();
 
-    if (!name || !surname || !age || !average) {
+    if (!name && !surname && !age && !average) {
         alert.style.display = 'block';
         console.log('input value'); 
         return;
