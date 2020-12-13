@@ -149,12 +149,17 @@ const Module = (function () {
 })();
 
 $('#getStudents').click(function() {
-    Module.httpRequest('GET', 'students.json')
+    Module.httpRequest('GET', 'https://reqres.in/api/users?page=1')
     .done(function(data) {
-        return data.result;
-    })
-    .done(function(data) {
-        $.each(data, function(index, { name, surname, age, average}) {
+        console.log(data);
+        students = data.data.map(item => ({
+            name: item.first_name,
+            surname: item.last_name,
+            average: +(item.id + Math.random()).toFixed(1),
+            age: +(item.id * Math.random()*10 + 1).toFixed(0)
+        }));
+
+        $.each(students, function(index, { name, surname, age, average}) {
             Module.create(name, surname, age, average);
         });
 
