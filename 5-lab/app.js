@@ -70,6 +70,8 @@ lab.controller('labController', ['$scope', '$http', function($scope, $http) {
             $scope.data.newStudent.surname = '';
             $scope.data.newStudent.age = '';
             $scope.data.newStudent.average = '';
+        } else {
+            console.log('input name and surname length more than 4');
         }
     }
 
