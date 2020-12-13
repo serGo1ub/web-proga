@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="labApp">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body ng-controller="labController">
+    <div class="page-header">
+        <h1> Список Студентов</h1>
+    </div>
+    <div class="panel">
+        <form ng-submit="addStudent()">
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" ng-model="data.newStudent.name" placeholder ="Name" 
+                        ng-value="data.selectedStudent.name || data.newStudent.name "/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" ng-model="data.newStudent.surname" placeholder="Surname" 
+                        ng-value="data.selectedStudent.surname || data.newStudent.surname"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" ng-model="data.newStudent.age" placeholder="Age" 
+                        ng-value="data.selectedStudent.age || data.newStudent.age"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" ng-model="data.newStudent.average" placeholder="Average" 
+                        ng-value="data.selectedStudent.average || data.newStudent.average"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <button class="btn btn-default" type="submit" ng-disabled="data.edit">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <button class="btn btn-default" type="button" ng-disabled="!data.edit" ng-click="endEditStudent()">
+                            Закончить редактирование
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Average</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in data.students">
+                    <td>{{student.name}}</td>   
+                    <td>{{student.surname}}</td>
+                    <td>{{student.age}}</td>
+                    <td>{{student.average}}</td>
+                    <td ng-click="data.edit || deleteStudent(student)">Delete</td>
+                    <td ng-click="editStudent(student)">Edit</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            Средний балл:
+        <span>{{getTotal()}}</span>
+        </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
