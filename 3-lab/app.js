@@ -166,9 +166,16 @@ const Module = (function () {
 })();
 
 getStudentsBtn.addEventListener('click', () => {
-    Module.httpRequest('GET', 'students.json')
+    Module.httpRequest('GET', 'https://reqres.in/api/users?page=1')
     .then(data => {
-        data.forEach(({ name, surname, age, average}) => {
+        students = data.data.map(item => ({
+            name: item.first_name,
+            surname: item.last_name,
+            average: +(item.id + Math.random()).toFixed(1),
+            age: +(item.id * Math.random()*10 + 1).toFixed(0)
+        }));
+
+        students.forEach(({ name, surname, age, average}) => {
             Module.create(name, surname, age, average);
         });
 
